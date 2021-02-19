@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Главная: Доска объявлений</title>
+    </head>
+    <body>
+        <h1>Объявления</h1>
+            {% for i in bboards %}
+            <div>
+                <h2>{{i.title}}</h2>
+                <p>{{i.content}}</p>
+                <p>{{i.puЬlished|date:"d.m.У Н:i:s"}}</p>
+            </div>
+        {% endfor %}
+    </body>
+</html>
