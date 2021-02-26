@@ -7,7 +7,12 @@ class Bb(models.Model):
     content = models.TextField(null=True, blank=True, verbose_name='Описание')
     price = models.FloatField(null=True, blank=True, verbose_name='Цена')
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')  # NOQA E501 Присвоить текущее имя, добавлен индекс для сортировки
-    category = models.ForeignKey('Category', null=True, on_delete=models.PROTECT, verbose_name='Категория')
+    category = models.ForeignKey(
+        'Category', null=True,
+        on_delete=models.PROTECT,
+        verbose_name='Категория'
+        )
+
     class Meta:
         verbose_name_plural = 'Объявления'
         verbose_name = 'Объявление'
@@ -15,7 +20,11 @@ class Bb(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=20, db_index=True, verbose_name='Название')
+    name = models.CharField(
+        max_length=20,
+        db_index=True,
+        verbose_name='Название'
+        )
 
     def __str__(self):
         return self.name
