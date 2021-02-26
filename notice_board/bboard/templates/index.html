@@ -6,11 +6,18 @@
     </head>
     <body>
         <h1>Объявления</h1>
-            {% for i in bboards %}
+        <div>
+        <a href="/bboard/">Главная</a>
+        {% for cat in category %}
+        <a href="/bboard/{{ cat.pk }}/">{{ cat.name }}</a>
+        {% endfor %}
+        </div>        
+            {% for board in bboards %}
             <div>
-                <h2>{{i.title}}</h2>
-                <p>{{i.content}}</p>
-                <p>{{i.puЬlished|date:"d.m.У Н:i:s"}}</p>
+                <h2>{{ board.title }}</h2>
+                <p>{{ board.content }}</p>
+                <p><a href="/bboard/{{ board.cat.pk }}"> {{ board.cat.name }}</a> </p>
+                <p>{{ board.puЬlished|date:"d.m.У Н:i:s" }}</p>
             </div>
         {% endfor %}
     </body>
