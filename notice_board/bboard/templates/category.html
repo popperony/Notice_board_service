@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title> {{ current_category }} Доска объявлений</title>
-    </head>
-    <body>
-        <h1>Объявления</h1>
+{% extends 'layout/base.html' %}
+{% block title %} {{ current_category }} {% endblock %}
+
+{% block content %}
         <h2>Категория: {{ current_category.name }} </h2>
-        <div>
-            <a href="/bboard/">Главная</a>
-            {% for cat in category %}
-            <a href="/bboard/{{ cat.id }}/">{{ cat.name }}</a>
-            {% endfor %}
-        </div>
         {% for board in bboards %}
         <div>
-        <h2>{{ board.title }}</h2>
-        <p>{{ board.content }}</p>
-        <p>{{ board.puЬlished|date:"d.m.y H:i:s" }}</p>
+            <h2>{{ board.title }}</h2>
+            <p>{{ board.content }}</p>
+            <p>{{ board.puЬlished|date:"d.m.y H:i:s" }}</p>
         </div>
         {% endfor %}
-    </body>
-</html>
+{% endblock %}
